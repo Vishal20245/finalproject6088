@@ -7,19 +7,26 @@ import { PatientService } from '../patient.service';
   templateUrl: './admindash.component.html',
   styleUrl: './admindash.component.css'
 })
-export class AdmindashComponent {
+export class AdmindashComponent{
 
-  patients:Patient[]=[];
+  Patients:Patient[]=[];
    
   constructor(private patientService:PatientService){}
-  ngOnInt():void{
+  ngOnInit():void{
     this.getPatients();
   }
     
-    getPatients(){
+    getPatients(){//methad hai
       this.patientService.getPatientList().subscribe(data=>{
-      this.patients=data;
+      this.Patients=data;
 
+      })
+    }
+
+    delete(id:number){
+      this.patientService.delete(id).subscribe(data=>{
+        console.log(data);
+        this.getPatients(); 
       })
     }
     

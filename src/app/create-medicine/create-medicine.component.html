@@ -1,0 +1,17 @@
+<div class="container">
+    <h2 class="text-center">Add new Medicine</h2>
+
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+        <label>drugname</label>
+        <input type="text" id="drugname" name="drugname" class="form-control" placeholder="Enter Drug Name" [(ngModel)]="medicine.drugname"/>
+        </div>
+
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="text" id="stock" name="stock" class="form-control" placeholder="Enter stock" [(ngModel)]="medicine.stock"/>
+            </div>
+
+            <button  class="btn btn-success">Submit</button>
+    </form>
+</div>
