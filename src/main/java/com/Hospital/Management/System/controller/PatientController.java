@@ -26,7 +26,6 @@ import com.Hospital.Management.System.repository.PatientRepository;
 @RequestMapping("/api/v1")
 public class PatientController {
 	
-	
 	private PatientRepository patientRepository;
 
 	public PatientController(PatientRepository patientRepository) {
@@ -38,14 +37,17 @@ public class PatientController {
 	public Patient createPatient(@RequestBody Patient Patient) {
 		return  patientRepository.save(Patient);
 		
-		
 	}
 	
 	@GetMapping("/patients")
 	public List<Patient>getAllPatient(){
 		return patientRepository.findAll();
 	
-		
+	}
+	@GetMapping("patients/{id}")
+	public ResponseEntity<Patient> getPatientById(@PathVariable long id) throws AttributeNotFoundException{
+		Patient patient =patientRepository.findById(id).orElseThrow(() -> new AttributeNotFoundException("patient not found with id :"+id));
+		return ResponseEntity.ok(patient);
 	}
 	
 	@DeleteMapping("/patients/{id}")
@@ -60,7 +62,6 @@ public class PatientController {
 		return ResponseEntity.ok(response);
 	}
 	
-	
 	@PutMapping("/patients/{id}")
 	public ResponseEntity<Patient> updatePatientById(@PathVariable long id,@RequestBody Patient patientDetails) throws AttributeNotFoundException{
 		
@@ -72,7 +73,7 @@ public class PatientController {
 		patient.setDose(patientDetails.getDose());
 		patient.setFees(patientDetails.getFees());
 		patient.setPrescription(patientDetails.getPrescription());
-		patient.setUrgency(patientDetails.getUrgency());
+		patient.setemergency(patientDetails.getemergency());
 	
 		
 		Patient SavedPatient= patientRepository.save(patient);

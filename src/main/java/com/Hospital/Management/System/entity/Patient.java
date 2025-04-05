@@ -26,12 +26,12 @@ public class Patient {
 	private String dose;
 	@Column(name="fees")
 	private String fees;
-	@Column(name="urgency")
-	private String urgency;
+	@Column(name="emergency")
+	private String emergency;
 	
 	
 	public Patient(long id, String name, String age, String blood, String prescription, String dose, String fees,
-			String urgency) {
+			String emergency) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -40,9 +40,8 @@ public class Patient {
 		this.prescription = prescription;
 		this.dose = dose;
 		this.fees = fees;
-		this.urgency = urgency;
+		this.emergency = emergency;
 	}
-
 
 	public Patient() {
 		super();
@@ -88,8 +87,8 @@ public class Patient {
 	public void setBlood(String blood) {
 		this.blood = blood;
 	}
-
-
+	
+	
 	public String getPrescription() {
 		return prescription;
 	}
@@ -120,17 +119,18 @@ public class Patient {
 	}
 
 
-	public String getUrgency() {
-		return urgency;
+	public String getemergency() {
+		return emergency;
 	}
 
 
-	public void setUrgency(String urgency) {
-		this.urgency = urgency;
+	public void setemergency(String emergency) {
+		this.emergency = emergency;
 	}
 	
-	
-	
-	
-
 }
+
+
+
+
+
